@@ -13,6 +13,9 @@ for i = 1, #scales do
     ENT.Base = "ent_treemesh"
     ENT.Spawnable = true
     ENT.PrintName =  "Tree: (" .. scale .. ")"
+    ENT.Author = "Ty4a"
+    ENT.Category = "Procedural Trees"
+    ENT.Instructions = "Do you have any ideas where I can use this?"
 
     function ENT:SpawnFunction(ply, tr, class)
         local tree = ents.Create("ent_treemesh")

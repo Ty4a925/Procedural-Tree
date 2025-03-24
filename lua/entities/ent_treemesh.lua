@@ -3,12 +3,6 @@ AddCSLuaFile()
 ENT.Type = "anim"
 ENT.Base = "base_gmodentity"
 ENT.Spawnable = false
-
-ENT.PrintName = "Procedural Tree"
-ENT.Author = "Ty4a"
-ENT.Category = "Procedural Trees"
-ENT.Instructions = "Do you have any ideas where I can use this?"
-
 ENT.TreeHD = 9
 ENT.RENDER_MESH = {}
 
