@@ -1,14 +1,3 @@
--- KAPUT, VIRUBAI
-
-local Lerp = Lerp
-local FrameTime = FrameTime
-local Vector = Vector
-local VectorRand = VectorRand
-
-local math_random = math.random
-
-local SERVER = SERVER
-
 AddCSLuaFile()
 
 ENT.Type = "anim"
@@ -30,9 +19,13 @@ end
 function ENT:Initialize()
     if SERVER then
         self:SetModel("models/hunter/blocks/cube025x025x025.mdl")
-        self:PhysicsInit(SOLID_VPHYSICS)
-        self:SetMoveType(MOVETYPE_VPHYSICS)
-        self:SetSolid(SOLID_VPHYSICS)
+        self:PhysicsInit(SOLID_BBOX)
+
+        local phys = self:GetPhysicsObject()
+
+        if phys:IsValid() then
+            phys:EnableMotion(false)
+        end
     else
         local size = self:GetTreeSize()
         local huhu = 10 * size
@@ -60,7 +53,7 @@ function ENT:Initialize()
             self.TreeSticks[#self.TreeSticks + 1] = stick
 
             if num < 6 then
-                local rand = math_random(2, 4)
+                local rand = math.random(2, 4)
                 for i = 1, rand do
                     local pos3 = (pos2 + VectorRand() * 0.7):GetNormalized()
                     StickGEN(pos + pos2 * len, pos3, gen - 1, len * 0.7, rad * 0.7, num + 1)
